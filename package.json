@@ -18,6 +18,8 @@
     "npm-run-all": "^4.0.2",
     "onchange": "^3.2.1",
     "postcss-cli": "^2.6.0",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
     "rimraf": "^2.6.1",
     "uglify-js": "^2.8.9",
     "webpack": "^2.5.1"
