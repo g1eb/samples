@@ -1,0 +1,61 @@
+/**
+ * Utility function to convert pixels to em
+ * (used to convert targets in media queries)
+ */
+/**
+ * Animation container
+ */
+.container {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  max-width: 1000px;
+  height: 100vh;
+  margin: 0 auto; }
+  @media only screen and (min-width: 25.9375em) {
+    .container {
+      flex-wrap: wrap;
+      flex-direction: row; } }
+
+/**
+ * Animated elements
+ */
+.container > div {
+  flex-shrink: 0;
+  display: flex;
+  width: 150px;
+  height: 150px;
+  margin: 25px auto;
+  padding: 10px;
+  opacity: 1;
+  background: transparent;
+  transition: all 1s ease-out;
+  will-change: transform, opacity; }
+  @media only screen and (min-width: 25.9375em) {
+    .container > div {
+      margin: 25px; } }
+
+.container > div.hidden {
+  transform: scale(1.1);
+  opacity: 0; }
+
+.container > div:hover {
+  cursor: pointer;
+  transform: scale(1.1); }
+
+/**
+ * Pulsating animation
+ */
+.container > div.animate {
+  animation-name: pulsate;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-out; }
+
+@keyframes pulsate {
+  50% {
+    transform: scale(1.05); }
+  100% {
+    transform: none; } }
