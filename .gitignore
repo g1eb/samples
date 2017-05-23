@@ -1,5 +1,5 @@
 # compiled css
-.css
+*.css
 
 # dependencies
 /node_modules
