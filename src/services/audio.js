@@ -29,7 +29,7 @@ class AudioService {
   }
 
   play(name) {
-    if ( !!this.ready ) {
+    if ( !!this.ready && !!this.buffers[name] ) {
       var source = this.context.createBufferSource()
       source.connect(this.context.destination)
       source.buffer = this.buffers[name]
