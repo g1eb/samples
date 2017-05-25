@@ -11,18 +11,26 @@ class Sample extends React.Component {
     this.state = {
       hidden: true,
       animate: false,
+      idle: false,
     }
   }
 
   componentWillMount() {
-    document.addEventListener('keydown', this.onKeyDown.bind(this))
+    document.addEventListener('keydown', this.handleKeyDown.bind(this))
   }
 
-  onKeyDown(event) {
+  handleKeyDown(event) {
+    this.resetAnimation()
     if ( event.keyCode === parseInt(this.props.name, 10) ) {
       this.props.play(this.props.name)
       this.toggleAnimate()
     }
+  }
+
+  handleClick() {
+    this.resetAnimation()
+    this.props.play(this.props.name)
+    this.toggleAnimate()
   }
 
   componentDidMount() {
@@ -30,20 +38,34 @@ class Sample extends React.Component {
       this.setState({hidden: false})
     }, Math.round(Math.random() * 1000))
 
-    this.animate()
+    this.resetAnimation()
+  }
+
+  resetAnimation() {
+    window.clearTimeout(this.animationTimeoutId)
+    window.clearTimeout(this.idleTimeoutId)
+    this.idleTimeoutId = window.setTimeout(() => {
+			this.animate()
+    }, 1000 * 60)
   }
 
   animate() {
-    window.setTimeout(() => {
-      this.toggleAnimate()
+    this.animationTimeoutId = window.setTimeout(() => {
+      this.toggleAnimate(true)
       this.animate()
     }, Math.ceil(Math.random() * 60) * 1000)
   }
 
-  toggleAnimate() {
-    this.setState({animate: true})
+  toggleAnimate(idle) {
+    this.setState({
+      animate: true,
+      idle: !!idle,
+    })
     window.setTimeout(() => {
-      this.setState({animate: false})
+      this.setState({
+        animate: false,
+        idle: false,
+      })
     }, 1000)
   }
 
@@ -51,10 +73,10 @@ class Sample extends React.Component {
     return (
       <div
         className={
-          classNames('sample', {'hidden': this.state.hidden, 'animate': this.state.animate})
+          classNames('sample', {'hidden': this.state.hidden, 'animate': this.state.animate, 'idle': this.state.idle})
         }
         style={{background: this.props.color}}
-        onClick={(event) => this.props.play(this.props.name)}>
+        onClick={this.handleClick.bind(this)}>
       </div>
     )
   }
