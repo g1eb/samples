@@ -11,7 +11,6 @@ class Sample extends React.Component {
     this.state = {
       hidden: true,
       animate: false,
-      buffer: undefined,
     }
   }
 
@@ -21,8 +20,6 @@ class Sample extends React.Component {
     }, Math.round(Math.random() * 1000))
 
     this.animate()
-
-    this.fetchBuffer()
   }
 
   animate() {
@@ -39,34 +36,14 @@ class Sample extends React.Component {
     }, 1000)
   }
 
-  fetchBuffer() {
-    var request = new XMLHttpRequest()
-    request.open('GET', this.props.src, true)
-    request.responseType = 'arraybuffer'
-    request.onload = (data) => {
-      this.props.context.decodeAudioData(request.response, (buffer) => {
-        this.buffer = buffer
-      }, (err) => {
-        console.log('sounds err: ', err)
-      })
-    }
-    request.send()
-  }
-
-  handleClick() {
-    var source = this.props.context.createBufferSource()
-    source.connect(this.props.context.destination)
-    source.buffer = this.buffer
-    source.loop = false
-    source.start(0)
-  }
-
   render() {
     return (
       <div
-        className={ classNames('sample', {'hidden': this.state.hidden, 'animate': this.state.animate}) }
+        className={
+          classNames('sample', {'hidden': this.state.hidden, 'animate': this.state.animate})
+        }
         style={{background: this.props.color}}
-        onClick={(event) => this.handleClick()}>
+        onClick={(event) => this.props.play(this.props.name)}>
       </div>
     )
   }
@@ -76,7 +53,7 @@ Sample.defaultProps = {
   src: '',
   name: '',
   color: '',
-  context: undefined,
+  play: undefined,
 }
 
 export default Sample

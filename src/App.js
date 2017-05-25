@@ -3,6 +3,8 @@ import React from 'react'
 import Row from './components/Row'
 import Container from './components/Container'
 
+import SampleService from './services/samples'
+
 import './styles/app.css'
 
 class App extends React.Component {
@@ -32,15 +34,19 @@ class App extends React.Component {
   }
 
   componentWillMount() {
-    this.context = new (window.AudioContext || window.webkitAudioContext)()
+    this.service = new SampleService(this.state.samples)
+  }
+
+  play(sample) {
+    this.service.play(sample)
   }
 
   render() {
     return (
       <Container>
-        <Row context={this.context} samples={this.state.samples.slice(0, 5)} />
-        <Row context={this.context} samples={this.state.samples.slice(5, 10)} />
-        <Row context={this.context} samples={this.state.samples.slice(10, 15)} />
+        <Row play={this.play.bind(this)} samples={this.state.samples.slice(0, 5)} />
+        <Row play={this.play.bind(this)} samples={this.state.samples.slice(5, 10)} />
+        <Row play={this.play.bind(this)} samples={this.state.samples.slice(10, 15)} />
       </Container>
     )
   }

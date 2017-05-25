@@ -10,7 +10,7 @@ class Row extends React.Component {
       <div className="row">
         {
           this.props.samples.map((sample) => {
-            return <Sample key={sample.name} src={sample.src} name={sample.name} color={sample.color} context={this.props.context} />
+            return <Sample key={sample.name} src={sample.src} name={sample.name} color={sample.color} play={this.props.play} />
           })
         }
       </div>
