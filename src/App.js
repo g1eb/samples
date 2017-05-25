@@ -3,7 +3,7 @@ import React from 'react'
 import Row from './components/Row'
 import Container from './components/Container'
 
-import SampleService from './services/samples'
+import AudioService from './services/audio'
 
 import './styles/app.css'
 
@@ -34,11 +34,11 @@ class App extends React.Component {
   }
 
   componentWillMount() {
-    this.service = new SampleService(this.state.samples)
+    this.service = new AudioService(this.state.samples)
   }
 
-  play(sample) {
-    this.service.play(sample)
+  play(name) {
+    this.service.play(name)
   }
 
   render() {

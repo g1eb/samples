@@ -1,4 +1,4 @@
-class SampleService {
+class AudioService {
 
   constructor(samples) {
     this.context = new (window.AudioContext || window.webkitAudioContext)()
@@ -22,13 +22,13 @@ class SampleService {
     request.send()
   }
 
-  play(sample) {
+  play(name) {
     var source = this.context.createBufferSource()
     source.connect(this.context.destination)
-    source.buffer = this.buffers[sample]
+    source.buffer = this.buffers[name]
     source.loop = false
     source.start(0)
   }
 }
 
-export default SampleService
+export default AudioService
