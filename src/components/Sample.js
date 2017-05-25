@@ -14,6 +14,17 @@ class Sample extends React.Component {
     }
   }
 
+  componentWillMount() {
+    document.addEventListener('keydown', this.onKeyDown.bind(this))
+  }
+
+  onKeyDown(event) {
+    if ( event.keyCode == this.props.name ) {
+      this.props.play(this.props.name)
+      this.toggleAnimate()
+    }
+  }
+
   componentDidMount() {
     window.setTimeout(() => {
       this.setState({hidden: false})
