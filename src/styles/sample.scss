@@ -32,10 +32,6 @@
     animation-iteration-count: 1;
     animation-timing-function: ease-out;
     pointer-events: none;
-
-    &.idle {
-      animation-duration: 1s;
-    }
   }
 }
 

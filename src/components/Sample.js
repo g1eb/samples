@@ -11,7 +11,6 @@ class Sample extends React.Component {
     this.state = {
       hidden: true,
       animate: false,
-      idle: false,
     }
   }
 
@@ -51,21 +50,15 @@ class Sample extends React.Component {
 
   animate() {
     this.animationTimeoutId = window.setTimeout(() => {
-      this.toggleAnimate(true)
+      this.toggleAnimate()
       this.animate()
     }, Math.ceil(Math.random() * 60) * 1000)
   }
 
-  toggleAnimate(idle) {
-    this.setState({
-      animate: true,
-      idle: !!idle,
-    })
+  toggleAnimate() {
+    this.setState({animate: true})
     window.setTimeout(() => {
-      this.setState({
-        animate: false,
-        idle: false,
-      })
+      this.setState({animate: false})
     }, 1000)
   }
 
@@ -73,7 +66,7 @@ class Sample extends React.Component {
     return (
       <div
         className={
-          classNames('sample', {'hidden': this.state.hidden, 'animate': this.state.animate, 'idle': this.state.idle})
+          classNames('sample', {'hidden': this.state.hidden, 'animate': this.state.animate})
         }
         style={{background: this.props.color}}
         onClick={this.handleClick.bind(this)}>
