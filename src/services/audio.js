@@ -29,13 +29,20 @@ class AudioService {
   }
 
   play(name) {
-    if ( !!this.ready && !!this.buffers[name] ) {
-      var source = this.context.createBufferSource()
-      source.connect(this.context.destination)
-      source.buffer = this.buffers[name]
-      source.loop = false
-      source.start(0)
-    }
+    return new Promise((resolve, reject) => {
+      if ( !!this.ready && !!this.buffers[name] ) {
+        var source = this.context.createBufferSource()
+        source.connect(this.context.destination)
+        source.buffer = this.buffers[name]
+        source.loop = false
+        source.start(0)
+        source.onended = () => {
+          resolve()
+        }
+      } else {
+        reject()
+      }
+    })
   }
 }
 

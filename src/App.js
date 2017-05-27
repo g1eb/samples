@@ -38,7 +38,7 @@ class App extends React.Component {
   }
 
   play(name) {
-    this.service.play(name)
+    return this.service.play(name)
   }
 
   render() {
