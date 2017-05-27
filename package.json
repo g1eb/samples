@@ -2,6 +2,7 @@
   "name": "samples",
   "version": "0.0.1",
   "description": "Electronic sample sequencer and controller",
+  "homepage": "http://g1eb.github.io/samples",
   "dependencies": {
     "node-sass-chokidar": "^0.0.1",
     "npm-run-all": "^4.0.2",
