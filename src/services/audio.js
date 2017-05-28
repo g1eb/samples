@@ -3,7 +3,7 @@ class AudioService {
   constructor(samples) {
     this.context = new (window.AudioContext || window.webkitAudioContext)()
 
-    this.buffers = []
+    this.buffers = {}
 
     let promises = samples.map((sample) => this.fetchBuffer(sample.name, sample.src))
     Promise.all(promises).then(() => {
@@ -34,7 +34,6 @@ class AudioService {
         var source = this.context.createBufferSource()
         source.connect(this.context.destination)
         source.buffer = this.buffers[name]
-        source.loop = false
         source.start(0)
         source.onended = () => {
           resolve()
