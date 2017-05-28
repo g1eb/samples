@@ -9,6 +9,7 @@ class Sample extends React.Component {
     super(props)
 
     this.state = {
+      input: false,
       hidden: true,
       animate: false,
     }
@@ -34,6 +35,14 @@ class Sample extends React.Component {
     this.props.play(this.props.name).then(() => {
       this.setState({animate: false})
     })
+
+    this.inputTimeoutId = window.setTimeout(() => {
+      this.setState({input: true})
+    }, 1000)
+  }
+
+  handleMouseUp() {
+    window.clearTimeout(this.inputTimeoutId)
   }
 
   componentDidMount() {
@@ -73,7 +82,8 @@ class Sample extends React.Component {
           classNames('sample', {'hidden': this.state.hidden, 'animate': this.state.animate})
         }
         style={{background: this.props.color}}
-        onMouseDown={this.handleMouseDown.bind(this)}>
+        onMouseDown={this.handleMouseDown.bind(this)}
+        onMouseUp={this.handleMouseUp.bind(this)}>
       </div>
     )
   }
