@@ -28,7 +28,7 @@ class Sample extends React.Component {
     }
   }
 
-  handleClick() {
+  handleMouseDown() {
     this.resetAnimation()
     this.setState({animate: true})
     this.props.play(this.props.name).then(() => {
@@ -73,7 +73,7 @@ class Sample extends React.Component {
           classNames('sample', {'hidden': this.state.hidden, 'animate': this.state.animate})
         }
         style={{background: this.props.color}}
-        onClick={this.handleClick.bind(this)}>
+        onMouseDown={this.handleMouseDown.bind(this)}>
       </div>
     )
   }
