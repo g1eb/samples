@@ -3,7 +3,7 @@ import React from 'react'
 import classNames from '../utilities/class'
 import '../styles/sample.css'
 
-import UploadIcon from '../icons/Upload'
+import FileInput from './FileInput'
 
 class Sample extends React.Component {
 
@@ -11,13 +11,10 @@ class Sample extends React.Component {
     super(props)
 
     this.state = {
-      drag: false,
       input: false,
       hidden: true,
       animate: false,
     }
-
-    this.dragCounter = 0;
   }
 
   componentWillMount() {
@@ -56,27 +53,6 @@ class Sample extends React.Component {
     window.clearTimeout(this.inputTimeoutId)
   }
 
-  handleDrop(event) {
-    event.preventDefault()
-    console.log(event.dataTransfer.files[0])
-  }
-
-  handleDragOver(event) {
-    event.preventDefault()
-  }
-
-  handleDragEnter() {
-    this.dragCounter++;
-    this.setState({'drag': true})
-  }
-
-  handleDragLeave() {
-    this.dragCounter--;
-    if ( this.dragCounter === 0 ) {
-      this.setState({'drag': false})
-    }
-  }
-
   componentDidMount() {
     window.setTimeout(() => {
       this.setState({hidden: false})
@@ -111,18 +87,7 @@ class Sample extends React.Component {
   renderInput() {
     if ( this.state.input ) {
       return (
-        <div className={
-            classNames('input-container', {'drag': this.state.drag})
-          }
-          onDrop={this.handleDrop.bind(this)}
-          onDragOver={this.handleDragOver.bind(this)}
-          onDragEnter={this.handleDragEnter.bind(this)}
-          onDragLeave={this.handleDragLeave.bind(this)}>
-          <input type='file' name='file' id='file' />
-          <label htmlFor='file'>
-            <UploadIcon width='512' height='512' />
-          </label>
-        </div>
+        <FileInput />
       )
     }
   }
