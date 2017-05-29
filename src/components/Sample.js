@@ -79,6 +79,17 @@ class Sample extends React.Component {
     }, 1000)
   }
 
+  renderInput() {
+    if ( this.state.input ) {
+      return (
+        <div>
+          <input type='file' name='file' id='file' />
+          <label htmlFor='file'></label>
+        </div>
+      )
+    }
+  }
+
   render() {
     return (
       <div
@@ -92,6 +103,7 @@ class Sample extends React.Component {
         style={{background: this.props.color}}
         onMouseDown={this.handleMouseDown.bind(this)}
         onMouseUp={this.handleMouseUp.bind(this)}>
+        {this.renderInput()}
       </div>
     )
   }
