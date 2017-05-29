@@ -20,12 +20,16 @@ class Sample extends React.Component {
   }
 
   handleKeyDown(event) {
-    this.resetAnimation()
-    if ( event.keyCode === parseInt(this.props.name, 10) ) {
-      this.setState({animate: true})
-      this.props.play(this.props.name).then(() => {
-        this.setState({animate: false})
-      })
+    if ( event.keyCode === 27 ) {
+      this.setState({'input': false})
+    } else {
+      this.resetAnimation()
+      if ( event.keyCode === parseInt(this.props.name, 10) ) {
+        this.setState({animate: true})
+        this.props.play(this.props.name).then(() => {
+          this.setState({animate: false})
+        })
+      }
     }
   }
 
