@@ -108,7 +108,7 @@ class Sample extends React.Component {
           onDragLeave={this.handleDragLeave.bind(this)}>
           <input type='file' name='file' id='file' />
           <label htmlFor='file'>
-            <UploadIcon width='20' height='17' />
+            <UploadIcon width='512' height='512' />
           </label>
         </div>
       )
