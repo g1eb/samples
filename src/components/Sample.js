@@ -63,7 +63,7 @@ class Sample extends React.Component {
     window.clearTimeout(this.animationTimeoutId)
     window.clearTimeout(this.idleTimeoutId)
     this.idleTimeoutId = window.setTimeout(() => {
-			this.animate()
+      this.animate()
     }, 1000 * 60)
   }
 
