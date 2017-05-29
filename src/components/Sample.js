@@ -53,6 +53,16 @@ class Sample extends React.Component {
     window.clearTimeout(this.inputTimeoutId)
   }
 
+  handleDragEnter() {
+    this.setState({'input': true})
+  }
+
+  handleDragLeave() {
+    window.setTimeout(() => {
+      this.setState({'input': false})
+    }, 1500)
+  }
+
   componentDidMount() {
     window.setTimeout(() => {
       this.setState({hidden: false})
@@ -104,7 +114,9 @@ class Sample extends React.Component {
         }
         style={{background: this.props.color}}
         onMouseDown={this.handleMouseDown.bind(this)}
-        onMouseUp={this.handleMouseUp.bind(this)}>
+        onMouseUp={this.handleMouseUp.bind(this)}
+        onDragEnter={this.handleDragEnter.bind(this)}
+        onDragLeave={this.handleDragLeave.bind(this)}>
         {this.renderInput()}
       </div>
     )
