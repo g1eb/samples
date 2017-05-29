@@ -79,7 +79,11 @@ class Sample extends React.Component {
     return (
       <div
         className={
-          classNames('sample', {'hidden': this.state.hidden, 'animate': this.state.animate})
+          classNames('sample', {
+            'input': this.state.input,
+            'hidden': this.state.hidden,
+            'animate': this.state.animate
+          })
         }
         style={{background: this.props.color}}
         onMouseDown={this.handleMouseDown.bind(this)}
