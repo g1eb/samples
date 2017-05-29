@@ -56,6 +56,15 @@ class Sample extends React.Component {
     window.clearTimeout(this.inputTimeoutId)
   }
 
+  handleDrop(event) {
+    event.preventDefault()
+    console.log(event.dataTransfer.files[0])
+  }
+
+  handleDragOver(event) {
+    event.preventDefault()
+  }
+
   handleDragEnter() {
     this.dragCounter++;
     this.setState({'drag': true})
@@ -105,6 +114,8 @@ class Sample extends React.Component {
         <div className={
             classNames('input-container', {'drag': this.state.drag})
           }
+          onDrop={this.handleDrop.bind(this)}
+          onDragOver={this.handleDragOver.bind(this)}
           onDragEnter={this.handleDragEnter.bind(this)}
           onDragLeave={this.handleDragLeave.bind(this)}>
           <input type='file' name='file' id='file' />
