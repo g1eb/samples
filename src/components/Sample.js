@@ -11,10 +11,13 @@ class Sample extends React.Component {
     super(props)
 
     this.state = {
+      drag: false,
       input: false,
       hidden: true,
       animate: false,
     }
+
+    this.dragCounter = 0;
   }
 
   componentWillMount() {
@@ -51,6 +54,18 @@ class Sample extends React.Component {
     window.clearTimeout(this.inputTimeoutId)
   }
 
+  handleDragEnter() {
+    this.dragCounter++;
+    this.setState({'drag': true})
+  }
+
+  handleDragLeave() {
+    this.dragCounter--;
+    if ( this.dragCounter === 0 ) {
+      this.setState({'drag': false})
+    }
+  }
+
   componentDidMount() {
     window.setTimeout(() => {
       this.setState({hidden: false})
@@ -84,7 +99,11 @@ class Sample extends React.Component {
   renderInput() {
     if ( this.state.input ) {
       return (
-        <div>
+        <div className={
+            classNames('input-container', {'drag': this.state.drag})
+          }
+          onDragEnter={this.handleDragEnter.bind(this)}
+          onDragLeave={this.handleDragLeave.bind(this)}>
           <input type='file' name='file' id='file' />
           <label htmlFor='file'>
             <UploadIcon width='20' height='17' />
