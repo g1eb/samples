@@ -1,7 +1,9 @@
 import React from 'react'
-import classNames from '../utilities/class'
 
+import classNames from '../utilities/class'
 import '../styles/sample.css'
+
+import UploadIcon from '../icons/Upload'
 
 class Sample extends React.Component {
 
@@ -84,7 +86,9 @@ class Sample extends React.Component {
       return (
         <div>
           <input type='file' name='file' id='file' />
-          <label htmlFor='file'></label>
+          <label htmlFor='file'>
+            <UploadIcon width='20' height='17' />
+          </label>
         </div>
       )
     }
