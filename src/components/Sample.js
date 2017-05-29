@@ -40,14 +40,16 @@ class Sample extends React.Component {
 
   handleMouseDown() {
     this.resetAnimation()
-    this.setState({animate: true})
-    this.props.play(this.props.name).then(() => {
-      this.setState({animate: false})
-    })
+    if ( !this.state.input ) {
+      this.setState({animate: true})
+      this.props.play(this.props.name).then(() => {
+        this.setState({animate: false})
+      })
 
-    this.inputTimeoutId = window.setTimeout(() => {
-      this.setState({input: true})
-    }, 1000)
+      this.inputTimeoutId = window.setTimeout(() => {
+        this.setState({input: true})
+      }, 1000)
+    }
   }
 
   handleMouseUp() {
