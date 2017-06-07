@@ -16,7 +16,7 @@ class Sample extends React.Component {
       animate: false,
     }
 
-    this.dragCounter = 0;
+    this.dragCounter = 0
   }
 
   componentWillMount() {
@@ -56,12 +56,12 @@ class Sample extends React.Component {
   }
 
   handleDragEnter() {
-    this.dragCounter++;
+    this.dragCounter++
     this.setState({'input': true})
   }
 
   handleDragLeave() {
-    this.dragCounter--;
+    this.dragCounter--
     if ( this.dragCounter === 0 ) {
       this.setState({'input': false})
     }

@@ -14,7 +14,7 @@ class FileInput extends React.Component {
       drag: false,
     }
 
-    this.dragCounter = 0;
+    this.dragCounter = 0
   }
 
   handleDrop(event) {
@@ -27,12 +27,12 @@ class FileInput extends React.Component {
   }
 
   handleDragEnter() {
-    this.dragCounter++;
+    this.dragCounter++
     this.setState({'drag': true})
   }
 
   handleDragLeave() {
-    this.dragCounter--;
+    this.dragCounter--
     if ( this.dragCounter === 0 ) {
       this.setState({'drag': false})
     }
