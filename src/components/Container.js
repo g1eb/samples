@@ -1,5 +1,7 @@
 import React from 'react'
 
+import '../styles/container.css'
+
 class Container extends React.Component {
   render () {
     return (

@@ -5,8 +5,6 @@ import Container from './components/Container'
 
 import AudioService from './services/audio'
 
-import './styles/app.css'
-
 class App extends React.Component {
 
   constructor(props) {
