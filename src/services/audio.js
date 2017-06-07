@@ -43,6 +43,25 @@ class AudioService {
       }
     })
   }
+
+  update(name, file) {
+    return new Promise((resolve, reject) => {
+      if ( !!this.ready && !!this.buffers[name] ) {
+        var reader = new FileReader()
+        reader.onload = (event) => {
+          this.context.decodeAudioData(event.target.result, (buffer) => {
+            this.buffers[name] = buffer
+            resolve()
+          }, (err) => {
+            reject(`sample service err: ${err}`)
+          })
+        }
+        reader.readAsArrayBuffer(file)
+      } else {
+        reject()
+      }
+    })
+  }
 }
 
 export default AudioService
