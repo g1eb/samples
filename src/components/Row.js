@@ -16,7 +16,8 @@ class Row extends React.Component {
                 src={sample.src}
                 name={sample.name}
                 color={sample.color}
-                play={this.props.play} />
+                play={this.props.play}
+                update={this.props.update} />
             )
           })
         }

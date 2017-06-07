@@ -37,6 +37,10 @@ class App extends React.Component {
     this.service = new AudioService(this.state.samples)
   }
 
+  update(name, file) {
+    return this.service.update(name, file)
+  }
+
   play(name) {
     return this.service.play(name)
   }
@@ -44,9 +48,9 @@ class App extends React.Component {
   render() {
     return (
       <Container>
-        <Row play={this.play.bind(this)} samples={this.state.samples.slice(0, 5)} />
-        <Row play={this.play.bind(this)} samples={this.state.samples.slice(5, 10)} />
-        <Row play={this.play.bind(this)} samples={this.state.samples.slice(10, 15)} />
+        <Row play={this.play.bind(this)} update={this.update.bind(this)} samples={this.state.samples.slice(0, 5)} />
+        <Row play={this.play.bind(this)} update={this.update.bind(this)} samples={this.state.samples.slice(5, 10)} />
+        <Row play={this.play.bind(this)} update={this.update.bind(this)} samples={this.state.samples.slice(10, 15)} />
       </Container>
     )
   }

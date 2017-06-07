@@ -19,7 +19,7 @@ class FileInput extends React.Component {
 
   handleDrop(event) {
     event.preventDefault()
-    console.log(event.dataTransfer.files[0])
+    this.props.handleNewFile(event.dataTransfer.files[0])
   }
 
   handleDragOver(event) {

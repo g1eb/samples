@@ -98,10 +98,16 @@ class Sample extends React.Component {
     }, 1000)
   }
 
+  handleNewFile(file) {
+    this.dragCounter--
+    this.setState({'input': false})
+    this.props.update(this.props.name, file)
+  }
+
   renderInput() {
     if ( this.state.input ) {
       return (
-        <FileInput />
+        <FileInput handleNewFile={this.handleNewFile.bind(this)} />
       )
     }
   }
