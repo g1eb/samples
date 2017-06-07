@@ -38,6 +38,10 @@ class FileInput extends React.Component {
     }
   }
 
+  handleFileChange(event) {
+    this.props.handleNewFile(event.target.files[0])
+  }
+
   render() {
     return (
       <div className={
@@ -47,7 +51,8 @@ class FileInput extends React.Component {
         onDragOver={this.handleDragOver.bind(this)}
         onDragEnter={this.handleDragEnter.bind(this)}
         onDragLeave={this.handleDragLeave.bind(this)}>
-        <input type='file' id='file' accept='audio/*' />
+        <input type='file' id='file' accept='audio/*'
+          onChange={this.handleFileChange.bind(this)} />
         <label htmlFor='file'>
           <UploadIcon width='512' height='512' />
         </label>
