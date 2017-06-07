@@ -47,7 +47,7 @@ class FileInput extends React.Component {
         onDragOver={this.handleDragOver.bind(this)}
         onDragEnter={this.handleDragEnter.bind(this)}
         onDragLeave={this.handleDragLeave.bind(this)}>
-        <input type='file' name='file' id='file' />
+        <input type='file' id='file' accept='audio/*' />
         <label htmlFor='file'>
           <UploadIcon width='512' height='512' />
         </label>
