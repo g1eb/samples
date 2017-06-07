@@ -25,4 +25,10 @@ class Row extends React.Component {
   }
 }
 
+Row.defaultProps = {
+  samples: [],
+  play: undefined,
+  update: undefined,
+}
+
 export default Row

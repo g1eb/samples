@@ -132,6 +132,7 @@ Sample.defaultProps = {
   name: '',
   color: '',
   play: undefined,
+  update: undefined,
 }
 
 export default Sample

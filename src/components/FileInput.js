@@ -57,10 +57,7 @@ class FileInput extends React.Component {
 }
 
 FileInput.defaultProps = {
-  src: '',
-  name: '',
-  color: '',
-  play: undefined,
+  handleNewFile: undefined,
 }
 
 export default FileInput
