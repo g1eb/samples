@@ -99,7 +99,7 @@ class Sample extends React.Component {
   }
 
   handleNewFile(file) {
-    this.dragCounter--
+    this.dragCounter = 0
     this.setState({'input': false})
     this.props.update(this.props.name, file)
   }
