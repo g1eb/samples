@@ -4,12 +4,12 @@
   "description": "Electronic sample sequencer and controller",
   "homepage": "http://g1eb.github.io/samples",
   "dependencies": {
-    "node-sass-chokidar": "^0.0.1",
-    "npm-run-all": "^4.0.2",
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
   },
   "devDependencies": {
+    "node-sass-chokidar": "^0.0.1",
+    "npm-run-all": "^4.0.2",
     "gh-pages": "^1.0.0",
     "react-scripts": "1.0.3"
   },
